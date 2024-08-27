@@ -24,7 +24,6 @@ declare module "@elegant-router/types" {
     "agent_account": "/agent/account";
     "agent_test-order": "/agent/test-order";
     "home": "/home";
-    "iframe-page": "/iframe-page/:url";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
     "manage": "/manage";
     "manage_role": "/manage/role";
@@ -80,7 +79,6 @@ declare module "@elegant-router/types" {
     | "500"
     | "agent"
     | "home"
-    | "iframe-page"
     | "login"
     | "manage"
     | "matrix"
@@ -106,7 +104,6 @@ declare module "@elegant-router/types" {
     | "403"
     | "404"
     | "500"
-    | "iframe-page"
     | "login"
     | "agent_account"
     | "agent_test-order"
