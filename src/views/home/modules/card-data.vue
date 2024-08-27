@@ -23,7 +23,7 @@ const cardData = computed<CardData[]>(() => [
   {
     key: 'visitCount',
     title: $t('page.home.visitCount'),
-    value: 9725,
+    value: 166,
     unit: '',
     color: {
       start: '#ec4786',
@@ -34,33 +34,33 @@ const cardData = computed<CardData[]>(() => [
   {
     key: 'turnover',
     title: $t('page.home.turnover'),
-    value: 1026,
-    unit: '$',
+    value: 93,
+    unit: '',
     color: {
       start: '#865ec0',
       end: '#5144b4'
     },
-    icon: 'ant-design:money-collect-outlined'
+    icon: 'material-symbols:account-balance-wallet-outline'
   },
   {
     key: 'downloadCount',
     title: $t('page.home.downloadCount'),
-    value: 970925,
+    value: 73,
     unit: '',
     color: {
       start: '#56cdf3',
       end: '#719de3'
     },
-    icon: 'carbon:document-download'
+    icon: 'ant-design:desktop-outlined'
   },
   {
     key: 'dealCount',
     title: $t('page.home.dealCount'),
-    value: 9527,
+    value: 0,
     unit: '',
     color: {
-      start: '#fcbc25',
-      end: '#f68057'
+      start: '#90F7EC',
+      end: '#32CCBC'
     },
     icon: 'ant-design:trademark-circle-outlined'
   }
@@ -79,6 +79,7 @@ function getGradientColor(color: CardData['color']) {
 
 <template>
   <NCard :bordered="false" size="small" class="card-wrapper">
+    <div class="mb-4 text-18px font-bold">{{ $t('page.home.cardDataTitle') }}</div>
     <!-- define component start: GradientBg -->
     <DefineGradientBg v-slot="{ $slots, gradientColor }">
       <div class="rd-8px px-16px pb-4px pt-8px text-white" :style="{ backgroundImage: gradientColor }">

@@ -40,6 +40,42 @@ export const generatedRoutes: GeneratedRoute[] = [
     }
   },
   {
+    name: 'agent',
+    path: '/agent',
+    component: 'layout.base',
+    meta: {
+      title: 'agent',
+      i18nKey: 'route.agent',
+      icon: 'material-symbols:webhook',
+      order: 2,
+      roles: ['R_SUPER']
+    },
+    children: [
+      {
+        name: 'agent_account',
+        path: '/agent/account',
+        component: 'view.agent_account',
+        meta: {
+          order: 1,
+          title: 'agent_account',
+          i18nKey: 'route.agent_account',
+          icon: 'material-symbols:deployed-code-account-outline'
+        }
+      },
+      {
+        name: 'agent_test-order',
+        path: '/agent/test-order',
+        component: 'view.agent_test-order',
+        meta: {
+          order: 2,
+          title: 'agent_test-order',
+          i18nKey: 'route.agent_test-order',
+          icon: 'material-symbols:border-color-outline'
+        }
+      }
+    ]
+  },
+  {
     name: 'home',
     path: '/home',
     component: 'layout.base$view.home',
@@ -48,19 +84,6 @@ export const generatedRoutes: GeneratedRoute[] = [
       i18nKey: 'route.home',
       icon: 'mdi:monitor-dashboard',
       order: 1
-    }
-  },
-  {
-    name: 'iframe-page',
-    path: '/iframe-page/:url',
-    component: 'layout.base$view.iframe-page',
-    props: true,
-    meta: {
-      title: 'iframe-page',
-      i18nKey: 'route.iframe-page',
-      constant: true,
-      hideInMenu: true,
-      keepAlive: true
     }
   },
   {
@@ -74,5 +97,218 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
+  },
+  {
+    name: 'manage',
+    path: '/manage',
+    component: 'layout.base',
+    meta: {
+      title: 'manage',
+      i18nKey: 'route.manage',
+      icon: 'carbon:cloud-service-management',
+      order: 9,
+      roles: ['R_ADMIN']
+    },
+    children: [
+      {
+        name: 'manage_role',
+        path: '/manage/role',
+        component: 'view.manage_role',
+        meta: {
+          title: 'manage_role',
+          i18nKey: 'route.manage_role',
+          icon: 'carbon:user-role',
+          order: 2,
+          roles: ['R_SUPER']
+        }
+      },
+      {
+        name: 'manage_user',
+        path: '/manage/user',
+        component: 'view.manage_user',
+        meta: {
+          title: 'manage_user',
+          i18nKey: 'route.manage_user',
+          icon: 'ic:round-manage-accounts',
+          order: 1,
+          hideInMenu: true,
+          roles: ['R_ADMIN']
+        }
+      },
+      {
+        name: 'manage_user-detail',
+        path: '/manage/user-detail/:id',
+        component: 'view.manage_user-detail',
+        props: true,
+        meta: {
+          title: 'manage_user-detail',
+          i18nKey: 'route.manage_user-detail',
+          hideInMenu: true,
+          roles: ['R_ADMIN'],
+          activeMenu: 'manage_user'
+        }
+      }
+    ]
+  },
+  {
+    name: 'matrix',
+    path: '/matrix',
+    component: 'layout.base',
+    meta: {
+      order: 6,
+      icon: 'material-symbols:grid-view-outline',
+      title: 'matrix',
+      i18nKey: 'route.matrix'
+    },
+    children: [
+      {
+        name: 'matrix_coin',
+        path: '/matrix/coin',
+        component: 'view.matrix_coin',
+        meta: {
+          order: 1,
+          icon: 'bi:coin',
+          title: 'matrix_coin',
+          i18nKey: 'route.matrix_coin'
+        }
+      }
+    ]
+  },
+  {
+    name: 'project',
+    path: '/project',
+    component: 'layout.base',
+    meta: {
+      title: 'project',
+      i18nKey: 'route.project',
+      icon: 'material-symbols:drive-file-move-outline',
+      order: 3
+    },
+    children: [
+      {
+        name: 'project_agent-level',
+        path: '/project/agent-level',
+        component: 'view.project_agent-level',
+        meta: {
+          order: 2,
+          icon: 'carbon:skill-level',
+          title: 'project_agent-level',
+          i18nKey: 'route.project_agent-level'
+        }
+      },
+      {
+        name: 'project_manage',
+        path: '/project/manage',
+        component: 'view.project_manage',
+        meta: {
+          order: 1,
+          title: 'project_manage',
+          i18nKey: 'route.project_manage',
+          icon: 'fluent:collections-16-regular'
+        }
+      },
+      {
+        name: 'project_tag',
+        path: '/project/tag',
+        component: 'view.project_tag',
+        meta: {
+          order: 3,
+          title: 'project_tag',
+          i18nKey: 'route.project_tag',
+          icon: 'material-symbols:bookmark-outline'
+        }
+      }
+    ]
+  },
+  {
+    name: 'record',
+    path: '/record',
+    component: 'layout.base',
+    meta: {
+      order: 5,
+      title: 'record',
+      i18nKey: 'route.record',
+      icon: 'material-symbols:library-books-outline'
+    },
+    children: [
+      {
+        name: 'record_bonus',
+        path: '/record/bonus',
+        component: 'view.record_bonus',
+        meta: {
+          order: 5,
+          icon: 'tabler:database-share',
+          title: 'record_bonus',
+          i18nKey: 'route.record_bonus'
+        }
+      },
+      {
+        name: 'record_card',
+        path: '/record/card',
+        component: 'view.record_card',
+        meta: {
+          order: 3,
+          icon: 'material-symbols:credit-card-outline',
+          title: 'record_card',
+          i18nKey: 'route.record_card'
+        }
+      },
+      {
+        name: 'record_point',
+        path: '/record/point',
+        component: 'view.record_point',
+        meta: {
+          order: 2,
+          icon: 'material-symbols:confirmation-number-outline',
+          title: 'record_point',
+          i18nKey: 'route.record_point'
+        }
+      },
+      {
+        name: 'record_reward',
+        path: '/record/reward',
+        component: 'view.record_reward',
+        meta: {
+          order: 4,
+          icon: 'material-symbols:kid-star-outline',
+          title: 'record_reward',
+          i18nKey: 'route.record_reward'
+        }
+      },
+      {
+        name: 'record_unblock',
+        path: '/record/unblock',
+        component: 'view.record_unblock',
+        meta: {
+          order: 1,
+          title: 'record_unblock',
+          i18nKey: 'route.record_unblock',
+          icon: 'material-symbols:lock-open-outline-rounded'
+        }
+      }
+    ]
+  },
+  {
+    name: 'user',
+    path: '/user',
+    component: 'layout.base',
+    meta: {
+      title: 'user',
+      i18nKey: 'route.user',
+      icon: 'material-symbols:account-box-outline',
+      order: 4
+    },
+    children: [
+      {
+        name: 'user_manage',
+        path: '/user/manage',
+        component: 'view.user_manage',
+        meta: {
+          title: 'user_manage',
+          i18nKey: 'route.user_manage',
+          icon: 'material-symbols:person-add-outline'
+        }
+      }
+    ]
   }
 ];

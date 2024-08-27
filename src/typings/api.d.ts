@@ -31,6 +31,15 @@ declare namespace Api {
      */
     type EnableStatus = '1' | '2';
 
+    /**
+     * unblock status
+     *
+     * - "1": pending
+     * - "2": success
+     * - "3": fail
+     */
+    type UnblockStatus = '1' | '2' | '3';
+
     /** common record */
     type CommonRecord<T = any> = {
       /** record id */
@@ -44,7 +53,7 @@ declare namespace Api {
       /** record update time */
       updateTime: string;
       /** record status */
-      status: EnableStatus | null;
+      status: EnableStatus | UnblockStatus | null;
     } & T;
   }
 
@@ -83,5 +92,446 @@ declare namespace Api {
       routes: MenuRoute[];
       home: import('@elegant-router/types').LastLevelRouteKey;
     }
+  }
+
+  /**
+   * namespace RecordManage
+   *
+   * backend api module: "RecordManage"
+   */
+  namespace RecordManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** Unblock */
+    type Unblock = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** user pay amount */
+      amount: number;
+      /* pay time */
+      time: string;
+    }>;
+
+    /* point number */
+    type Point = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** user pay amount */
+      amount: number;
+      /* order type */
+      type: string;
+      /** user pay amount */
+      remark: string;
+      /* pay time */
+      time: string;
+    }>;
+
+    /* point card */
+    type Card = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /* order type */
+      type: string;
+      /** user pay amount */
+      amount: number;
+      /** user pay amount */
+      remark: string;
+      /* pay time */
+      time: string;
+    }>;
+
+    /* reward */
+    type Reward = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** reward type */
+      type: string;
+      /** user pay amount */
+      amount: number;
+      /* add time */
+      createTime: string;
+      /* pay time */
+      finalTime: string;
+    }>;
+
+    /* bonus 用户地址，类型（团队收益/代理收益/网格加权收益/投资收益/），数量，时间。关联的订单（来自于哪个订单给到的收益）。 */
+    type Bonus = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** reward type */
+      type: string;
+      /** user pay amount */
+      amount: number;
+      /* add time */
+      createTime: string;
+      /* related Orders */
+      relatedOrders: string;
+    }>;
+
+    /** Unblock Record */
+    type UnblockRecord = Common.PaginatingQueryRecord<Unblock>;
+
+    /** Point Record */
+    type PointRecord = Common.PaginatingQueryRecord<Point>;
+
+    /** Card Record */
+    type CardRecord = Common.PaginatingQueryRecord<Card>;
+
+    /** Reward Record */
+    type RewardRecord = Common.PaginatingQueryRecord<Reward>;
+
+    /** Bonus Record */
+    type BonusRecord = Common.PaginatingQueryRecord<Bonus>;
+  }
+
+  /**
+   * namespace AgentManage
+   *
+   * backend api module: "agentManage"
+   */
+  namespace AgentManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** user */
+    type User = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** user website */
+      website: string;
+      /** remark */
+      remark: string;
+    }>;
+
+    /** level */
+    type Level = Common.CommonRecord<{
+      /** user address */
+      level: string;
+      /** user website */
+      price: number;
+    }>;
+
+    /** user search params */
+    type UserSearchParams = CommonType.RecordNullable<
+      Pick<Api.AgentManage.User, 'address' | 'website' | 'remark'> & CommonSearchParams
+    >;
+
+    /** level search params */
+    type UserLevelSearchParams = CommonType.RecordNullable<
+      Pick<Api.AgentManage.Level, 'level' | 'price'> & CommonSearchParams
+    >;
+
+    /** user list */
+    type UserList = Common.PaginatingQueryRecord<User>;
+
+    /** user list */
+    type UserLevel = Common.PaginatingQueryRecord<Level>;
+  }
+
+  /**
+   * namespace MatrixManage
+   *
+   * backend api module: "MatrixManage"
+   */
+  namespace MatrixManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** coin */
+    type Coin = Common.CommonRecord<{
+      /** coin name */
+      label: string;
+      /** trade pair */
+      tradePair: string;
+      /* logo */
+      logo: string;
+      /** coin price */
+      price: string;
+    }>;
+
+    /** level search params */
+    type UserLevelSearchParams = CommonType.RecordNullable<
+      Pick<Api.AgentManage.Level, 'level' | 'price'> & CommonSearchParams
+    >;
+
+    /** coin list */
+    type CoinList = Common.PaginatingQueryRecord<Coin>;
+  }
+
+  /**
+   * namespace UserManage
+   *
+   * backend api module: "userManage"
+   */
+  namespace UserManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** user */
+    type User = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** user block */
+      unblock: boolean;
+      /** proxy level */
+      proxyLevel: string;
+      /** team level */
+      teamLevel: string;
+      /** invster address */
+      invsterAddress: string;
+      /** bond time */
+      bondTime: string;
+      /** team amount */
+      teamAmount: number;
+      /* points */
+      point: number;
+      /* card */
+      card: number;
+      /* grid gain */
+      gridGain: number;
+      /* proxy gain */
+      proxyGain: number;
+      /* team gain */
+      teamGain: number;
+      /* unblock gain */
+      unblockGain: number;
+      /* creact time */
+      creactTime: string;
+    }>;
+
+    /** user search params */
+    type UserSearchParams = CommonType.RecordNullable<
+      Pick<Api.UserManage.User, 'teamLevel' | 'proxyLevel' | 'point' | 'card'> & CommonSearchParams
+    >;
+
+    /** user list */
+    type UserList = Common.PaginatingQueryRecord<User>;
+  }
+
+  /**
+   * namespace ProjectManage
+   *
+   * backend api module: "projectManage"
+   */
+  namespace ProjectManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** user */
+    type User = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** user website */
+      website: string;
+      /** remark */
+      remark: string;
+    }>;
+
+    /** level */
+    type Tag = Common.CommonRecord<{
+      /** user address */
+      label: string;
+    }>;
+
+    /** user search params */
+    type UserSearchParams = CommonType.RecordNullable<
+      Pick<Api.ProjectManage.User, 'address' | 'website' | 'remark'> & CommonSearchParams
+    >;
+
+    /** level search params */
+    type InvestmentTagSearchParams = CommonType.RecordNullable<
+      Pick<Api.ProjectManage.Tag, 'id' | 'label' | 'status'> & CommonSearchParams
+    >;
+
+    /** user list */
+    type UserList = Common.PaginatingQueryRecord<User>;
+
+    /** Investment Tag */
+    type InvestmentTag = Common.PaginatingQueryRecord<Tag>;
+  }
+
+  /**
+   * namespace TestOrder
+   *
+   * backend api module: "testOrder"
+   */
+  namespace TestOrder {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    type Matrix = {
+      id: number;
+      logo: string;
+      store: number;
+    };
+
+    /** Order */
+    type Order = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** matrix */
+      matrix: Matrix;
+      /** parts */
+      parts: number;
+      /** actual purchase amount */
+      actualAmount: number;
+      /** price */
+      price: number;
+      /** total purchase amount */
+      totalAmount: number;
+      /** earnest money */
+      cash: number;
+      /** actual claim revenue */
+      actualClaim: number;
+      /** estimated revenue */
+      estimatedRevenue: number;
+      /** surplus */
+      surplus: number;
+      /** timeline */
+      timeline: string;
+      /** add Time */
+      addTime: string;
+    }>;
+
+    /** user search params */
+    type OrderSearchParams = CommonType.RecordNullable<
+      Pick<Api.TestOrder.Order, 'address' | 'parts' | 'price' | 'cash' | 'addTime'> & CommonSearchParams
+    >;
+
+    /** order list */
+    type OrderList = Common.PaginatingQueryRecord<Order>;
+  }
+
+  /**
+   * namespace SystemManage
+   *
+   * backend api module: "systemManage"
+   */
+  namespace SystemManage {
+    type CommonSearchParams = Pick<Common.PaginatingCommonParams, 'current' | 'size'>;
+
+    /** role */
+    type Role = Common.CommonRecord<{
+      /** role name */
+      roleName: string;
+      /** role code */
+      roleCode: string;
+      /** role description */
+      roleDesc: string;
+    }>;
+
+    /** role search params */
+    type RoleSearchParams = CommonType.RecordNullable<
+      Pick<Api.SystemManage.Role, 'roleName' | 'roleCode' | 'status'> & CommonSearchParams
+    >;
+
+    /** role list */
+    type RoleList = Common.PaginatingQueryRecord<Role>;
+
+    /** all role */
+    type AllRole = Pick<Role, 'id' | 'roleName' | 'roleCode'>;
+
+    /**
+     * user gender
+     *
+     * - "1": "male"
+     * - "2": "female"
+     */
+    type UserGender = '1' | '2';
+
+    /** user */
+    type User = Common.CommonRecord<{
+      /** user name */
+      userName: string;
+      /** user gender */
+      userGender: UserGender | null;
+      /** user nick name */
+      nickName: string;
+      /** user phone */
+      userPhone: string;
+      /** user email */
+      userEmail: string;
+      /** user role code collection */
+      userRoles: string[];
+    }>;
+
+    /** user search params */
+    type UserSearchParams = CommonType.RecordNullable<
+      Pick<Api.SystemManage.User, 'userName' | 'userGender' | 'nickName' | 'userPhone' | 'userEmail' | 'status'> &
+        CommonSearchParams
+    >;
+
+    /** user list */
+    type UserList = Common.PaginatingQueryRecord<User>;
+
+    /**
+     * menu type
+     *
+     * - "1": directory
+     * - "2": menu
+     */
+    type MenuType = '1' | '2';
+
+    type MenuButton = {
+      /**
+       * button code
+       *
+       * it can be used to control the button permission
+       */
+      code: string;
+      /** button description */
+      desc: string;
+    };
+
+    /**
+     * icon type
+     *
+     * - "1": iconify icon
+     * - "2": local icon
+     */
+    type IconType = '1' | '2';
+
+    type MenuPropsOfRoute = Pick<
+      import('vue-router').RouteMeta,
+      | 'i18nKey'
+      | 'keepAlive'
+      | 'constant'
+      | 'order'
+      | 'href'
+      | 'hideInMenu'
+      | 'activeMenu'
+      | 'multiTab'
+      | 'fixedIndexInTab'
+      | 'query'
+    >;
+
+    type Menu = Common.CommonRecord<{
+      /** parent menu id */
+      parentId: number;
+      /** menu type */
+      menuType: MenuType;
+      /** menu name */
+      menuName: string;
+      /** route name */
+      routeName: string;
+      /** route path */
+      routePath: string;
+      /** component */
+      component?: string;
+      /** iconify icon name or local icon name */
+      icon: string;
+      /** icon type */
+      iconType: IconType;
+      /** buttons */
+      buttons?: MenuButton[] | null;
+      /** children menu */
+      children?: Menu[] | null;
+    }> &
+      MenuPropsOfRoute;
+
+    /** menu list */
+    type MenuList = Common.PaginatingQueryRecord<Menu>;
+
+    type MenuTree = {
+      id: number;
+      label: string;
+      pId: number;
+      children?: MenuTree[];
+    };
   }
 }

@@ -1,11 +1,13 @@
 <script setup lang="ts">
-defineOptions({
-  name: 'BindWechat'
-});
+interface Props {
+  id: string;
+}
+
+defineProps<Props>();
 </script>
 
 <template>
-  <div></div>
+  <LookForward />
 </template>
 
 <style scoped></style>
