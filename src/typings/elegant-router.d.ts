@@ -24,7 +24,7 @@ declare module "@elegant-router/types" {
     "agent_account": "/agent/account";
     "agent_test-order": "/agent/test-order";
     "home": "/home";
-    "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
+    "login": "/login/:module(pwd-login|code-login|register|reset-pwd)?";
     "manage": "/manage";
     "manage_role": "/manage/role";
     "manage_system": "/manage/system";
