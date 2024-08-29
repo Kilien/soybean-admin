@@ -1,6 +1,6 @@
 import { ref, toValue } from 'vue';
 import type { ComputedRef, Ref } from 'vue';
-import type { FormInst } from 'naive-ui';
+import type { FormInst, FormItemRule } from 'naive-ui';
 import { REG_CODE_SIX, REG_EMAIL, REG_PHONE, REG_PWD, REG_USER_NAME } from '@/constants/reg';
 import { $t } from '@/locales';
 
@@ -51,6 +51,21 @@ export function useFormRules() {
     };
   }
 
+  const defaultNumberRule = [
+    {
+      required: true,
+      validator(_rule: FormItemRule, value: string) {
+        if (!value) {
+          return new Error('不能为空');
+        } else if (!/^\d*$/.test(value)) {
+          return new Error('应该为整数');
+        }
+        return true;
+      },
+      trigger: ['input', 'blur']
+    }
+  ];
+
   /** create a rule for confirming the password */
   function createConfirmPwdRule(pwd: string | Ref<string> | ComputedRef<string>) {
     const confirmPwdRule: App.Global.FormRule[] = [
@@ -73,6 +88,7 @@ export function useFormRules() {
     patternRules,
     formRules,
     defaultRequiredRule,
+    defaultNumberRule,
     createRequiredRule,
     createConfirmPwdRule
   };

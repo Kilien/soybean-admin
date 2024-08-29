@@ -2,7 +2,7 @@
 declare namespace App {
   /** Theme namespace */
   namespace Theme {
-    type ColorPaletteNumber = import('@sa/color').ColorPaletteNumber;
+    type ColorPaletteNumber = import('@sa/color').ColorPalettestring;
 
     /** Theme setting */
     interface ThemeSetting {
@@ -43,7 +43,7 @@ declare namespace App {
       /** Header */
       header: {
         /** Header height */
-        height: number;
+        height: string;
         /** Header breadcrumb */
         breadcrumb: {
           /** Whether to show the breadcrumb */
@@ -63,7 +63,7 @@ declare namespace App {
          */
         cache: boolean;
         /** Tab height */
-        height: number;
+        height: string;
         /** Tab mode */
         mode: UnionKey.ThemeTabMode;
       };
@@ -74,15 +74,15 @@ declare namespace App {
         /** Inverted sider */
         inverted: boolean;
         /** Sider width */
-        width: number;
+        width: string;
         /** Collapsed sider width */
-        collapsedWidth: number;
+        collapsedWidth: string;
         /** Sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixWidth: number;
+        mixWidth: string;
         /** Collapsed sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixCollapsedWidth: number;
+        mixCollapsedWidth: string;
         /** Child menu width when the layout is 'vertical-mix' or 'horizontal-mix' */
-        mixChildMenuWidth: number;
+        mixChildMenuWidth: string;
       };
       /** Footer */
       footer: {
@@ -91,7 +91,7 @@ declare namespace App {
         /** Whether fixed the footer */
         fixed: boolean;
         /** Footer height */
-        height: number;
+        height: string;
         /** Whether float the footer to the right when the layout is 'horizontal-mix' */
         right: boolean;
       };
@@ -525,6 +525,32 @@ declare namespace App {
           relatedOrders: string;
           remark: string;
           time: string;
+          unblockTitle: string;
+          pointTitle: string;
+          cardTitle: string;
+          rewardTitle: string;
+          bonusTitle: string;
+          index: string;
+        };
+        user: {
+          id: string;
+          address: string;
+          unblock: string;
+          proxyLevel: string;
+          teamLevel: string;
+          invsterAddress: string;
+          bondTime: string;
+          teamAmount: string;
+          point: string;
+          card: string;
+          gridGain: string;
+          proxyGain: string;
+          teamGain: string;
+          unblockGain: string;
+          creactTime: string;
+          newLevel: string;
+          editLevel: string;
+          inputLevel: string;
         };
         manage: any;
       };

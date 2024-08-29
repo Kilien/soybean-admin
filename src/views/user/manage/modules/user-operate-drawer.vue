@@ -29,8 +29,8 @@ const { formRef, validate, restoreValidation } = useNaiveForm();
 
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t('新增等级'),
-    edit: $t('编辑等级')
+    add: $t('page.user.newLevel'),
+    edit: $t('page.user.editLevel')
   };
   return titles[props.operateType];
 });
@@ -81,16 +81,16 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model">
-        <NFormItem :label="$t('团队等级')" path="teamLevel">
-          <NInput v-model:value="model.teamLevel" :placeholder="$t('请输入等级名称')" />
+        <NFormItem :label="$t('page.user.teamLevel')" path="teamLevel">
+          <NInput v-model:value="model.teamLevel" :placeholder="$t('page.user.inputLevel')" />
         </NFormItem>
-        <NFormItem :label="$t('代理等级')" path="proxyLevel">
-          <NInput v-model:value="model.proxyLevel" :placeholder="$t('请输入等级名称')" />
+        <NFormItem :label="$t('page.user.proxyLevel')" path="proxyLevel">
+          <NInput v-model:value="model.proxyLevel" :placeholder="$t('page.user.inputLevel')" />
         </NFormItem>
-        <NFormItem :label="$t('积分')" path="point">
+        <NFormItem :label="$t('page.user.point')" path="point">
           <NInputNumber v-model:value="model.point" />
         </NFormItem>
-        <NFormItem :label="$t('点卡')" path="card">
+        <NFormItem :label="$t('page.user.card')" path="card">
           <NInputNumber v-model:value="model.card" />
         </NFormItem>
       </NForm>

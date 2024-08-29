@@ -27,6 +27,7 @@ declare module "@elegant-router/types" {
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
     "manage": "/manage";
     "manage_role": "/manage/role";
+    "manage_system": "/manage/system";
     "manage_user": "/manage/user";
     "manage_user-detail": "/manage/user-detail/:id";
     "matrix": "/matrix";
@@ -109,6 +110,7 @@ declare module "@elegant-router/types" {
     | "agent_test-order"
     | "home"
     | "manage_role"
+    | "manage_system"
     | "manage_user-detail"
     | "manage_user"
     | "matrix_coin"

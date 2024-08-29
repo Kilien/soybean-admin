@@ -20,91 +20,91 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
   columns: () => [
     {
       key: 'id',
-      title: $t('用户ID'),
+      title: $t('page.user.id'),
       align: 'center',
       width: 64
     },
     {
       key: 'address',
-      title: $t('用户钱包地址'),
+      title: $t('page.user.address'),
       align: 'center',
       minWidth: 200
     },
     {
       key: 'unblock',
-      title: $t('是否解锁'),
+      title: $t('page.user.unblock'),
       align: 'center',
       width: 50
     },
     {
       key: 'proxyLevel',
-      title: $t('代理等级'),
+      title: $t('page.user.proxyLevel'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'teamLevel',
-      title: $t('团队等级'),
+      title: $t('page.user.teamLevel'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'invsterAddress',
-      title: $t('邀请人钱包地址'),
+      title: $t('page.user.invsterAddress'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'bondTime',
-      title: $t('绑定关系时间'),
+      title: $t('page.user.bondTime'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'teamAmount',
-      title: $t('团队业绩'),
+      title: $t('page.user.teamAmount'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'point',
-      title: $t('积分'),
+      title: $t('page.user.point'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'card',
-      title: $t('点卡'),
+      title: $t('page.user.card'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'gridGain',
-      title: $t('网格总收益/可领取'),
+      title: $t('page.user.gridGain'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'proxyGain',
-      title: $t('代理总收益/可领取'),
+      title: $t('page.user.proxyGain'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'teamGain',
-      title: $t('团队总收益/可领取'),
+      title: $t('page.user.teamGain'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'unblockGain',
-      title: $t('解锁收益/可领取'),
+      title: $t('page.user.unblockGain'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'createTime',
-      title: $t('注册时间'),
+      title: $t('page.user.creactTime'),
       align: 'center',
       minWidth: 100
     },

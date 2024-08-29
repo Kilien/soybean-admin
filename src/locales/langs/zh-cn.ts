@@ -156,7 +156,6 @@ const local: App.I18n.Schema = {
     403: '无权限',
     404: '页面不存在',
     500: '服务器错误',
-    'iframe-page': '外链页面',
     home: '首页',
     agent: '代理管理',
     agent_account: '代理',
@@ -176,6 +175,7 @@ const local: App.I18n.Schema = {
     matrix: '矩阵管理',
     matrix_coin: '币种管理',
     manage: '系统管理',
+    manage_system: '系统配置',
     manage_user: '用户管理',
     'manage_user-detail': '用户详情',
     manage_role: '角色管理',
@@ -335,7 +335,33 @@ const local: App.I18n.Schema = {
       finalTime: '完成时间',
       relatedOrders: '关联的订单',
       remark: '备注',
-      time: '时间'
+      time: '时间',
+      unblockTitle: '解锁记录',
+      pointTitle: '积分记录',
+      cardTitle: '点卡记录',
+      rewardTitle: '收益记录',
+      bonusTitle: '分红收益来源',
+      index: '序号'
+    },
+    user: {
+      id: '用户ID',
+      address: '用户地址',
+      unblock: '是否解锁',
+      proxyLevel: '代理等级',
+      teamLevel: '团队等级',
+      invsterAddress: '邀请人钱包地址',
+      bondTime: '绑定关系时间',
+      teamAmount: '团队业绩',
+      point: '积分',
+      card: '点卡',
+      gridGain: '网格总收益/可领取',
+      proxyGain: '代理总收益/可领取',
+      teamGain: '团队总收益/可领取',
+      unblockGain: '解锁收益/可领取',
+      creactTime: '注册时间',
+      newLevel: '新增等级',
+      editLevel: '编辑等级',
+      inputLevel: '请输入等级名称'
     },
     manage: {
       common: {
@@ -453,6 +479,16 @@ const local: App.I18n.Schema = {
           iconify: 'iconify图标',
           local: '本地图标'
         }
+      },
+      system: {
+        config: '系统配置',
+        exchangPriceSwitch: '是否启动交易所价格获取',
+        syncNumber: '后台交易所订单状态每次同步数量',
+        syncIterval: '后台交易所订单状态同步间隔（单位 分钟）',
+        prepaidOrderExpiryTime: '预付订单【系统】过期时间（单位 秒）',
+        contractExpiryTime: '预付订单【合约】过期时间（单位 秒）',
+        orderExpiryTime: '交易所下单过期时间（单位 秒）',
+        exchangeExpiryTime: '交易所交易过期时间（单位 秒）'
       }
     }
   },

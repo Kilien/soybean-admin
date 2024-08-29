@@ -53,7 +53,7 @@ declare namespace Api {
       /** record update time */
       updateTime: string;
       /** record status */
-      status: EnableStatus | UnblockStatus | null;
+      status: EnableStatus | null;
     } & T;
   }
 
@@ -533,5 +533,31 @@ declare namespace Api {
       pId: number;
       children?: MenuTree[];
     };
+
+    /**
+     * Exchange Price Switch
+     *
+     * - true: "open"
+     * - false: "close"
+     */
+    type ExchangePriceSwitch = boolean;
+
+    /** order */
+    type Order = Common.CommonRecord<{
+      /** ExchangePriceSwitch */
+      exchangPriceSwitch: ExchangePriceSwitch;
+      /** the number of back-office exchange order statuses to be synchronised at a time */
+      syncNumber: number;
+      /** exchange order status synchronisation intervals. */
+      syncIterval: number;
+      /** prepaid order system expiration time */
+      prepaidOrderExpiryTime: number;
+      /** Precautionary order contract expiry time */
+      contractExpiryTime: number;
+      /** exchange order expiration time */
+      orderExpiryTime: number;
+      /** exchange expiration time. */
+      exchangeExpiryTime: number;
+    }>;
   }
 }

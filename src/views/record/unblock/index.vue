@@ -26,13 +26,13 @@ const { columns, columnChecks, data, getData, loading, mobilePagination } = useT
     },
     {
       key: 'address',
-      title: $t('用户地址'),
+      title: $t('page.record.address'),
       align: 'center',
       minWidth: 100
     },
     {
       key: 'status',
-      title: $t('状态'),
+      title: $t('page.record.status'),
       align: 'center',
       minWidth: 100,
       render: row => {
@@ -53,13 +53,13 @@ const { columns, columnChecks, data, getData, loading, mobilePagination } = useT
     },
     {
       key: 'amount',
-      title: $t('实际支付'),
+      title: $t('page.record.actualAmount'),
       align: 'center',
       minWidth: 200
     },
     {
       key: 'time',
-      title: $t('时间'),
+      title: $t('page.record.time'),
       align: 'center',
       minWidth: 200
     }
@@ -69,7 +69,7 @@ const { columns, columnChecks, data, getData, loading, mobilePagination } = useT
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <NCard :title="$t('代理等级')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <NCard :title="$t('page.record.unblockTitle')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"

@@ -123,6 +123,17 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       },
       {
+        name: 'manage_system',
+        path: '/manage/system',
+        component: 'view.manage_system',
+        meta: {
+          order: 1,
+          icon: 'material-symbols:power-settings-circle-outline',
+          title: 'manage_system',
+          i18nKey: 'route.manage_system'
+        }
+      },
+      {
         name: 'manage_user',
         path: '/manage/user',
         component: 'view.manage_user',
@@ -130,7 +141,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'manage_user',
           i18nKey: 'route.manage_user',
           icon: 'ic:round-manage-accounts',
-          order: 1,
+          order: 2,
           hideInMenu: true,
           roles: ['R_ADMIN']
         }

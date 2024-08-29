@@ -23,6 +23,7 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   "agent_test-order": () => import("@/views/agent/test-order/index.vue"),
   home: () => import("@/views/home/index.vue"),
   manage_role: () => import("@/views/manage/role/index.vue"),
+  manage_system: () => import("@/views/manage/system/index.vue"),
   "manage_user-detail": () => import("@/views/manage/user-detail/[id].vue"),
   manage_user: () => import("@/views/manage/user/index.vue"),
   matrix_coin: () => import("@/views/matrix/coin/index.vue"),

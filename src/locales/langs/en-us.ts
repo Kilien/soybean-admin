@@ -156,7 +156,6 @@ const local: App.I18n.Schema = {
     403: 'No Permission',
     404: 'Page Not Found',
     500: 'Server Error',
-    'iframe-page': 'Iframe',
     home: 'Home',
     agent: 'Agent Manage',
     agent_account: 'Agent',
@@ -176,6 +175,7 @@ const local: App.I18n.Schema = {
     matrix: 'Matrix',
     matrix_coin: 'Coin Manage',
     manage: 'System Manage',
+    manage_system: 'System Config',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
     manage_role: 'Role Manage',
@@ -269,9 +269,11 @@ const local: App.I18n.Schema = {
       turnover: 'Turnover',
       dealCount: 'Deal Count',
       cardDataTitle: 'Matrix Data',
+      coinDataTitle: 'Coin Data',
       coinNumber: 'Total Coin Number',
       tardeNumber: 'Tarde Number',
       totalReward: 'Total Reward',
+      totalInvestmentAmount: 'Total Investment Amount',
       ongoingAmount: 'Ongoing Amount',
       withdrawnCash: 'Withdrawn Cash',
       undrawnCash: 'Undrawn Cash',
@@ -333,7 +335,33 @@ const local: App.I18n.Schema = {
       finalTime: 'Final Time',
       relatedOrders: 'Related Orders',
       remark: 'Remark',
-      time: 'Time'
+      time: 'Time',
+      unblockTitle: 'Unblock Data',
+      pointTitle: 'Point Data',
+      cardTitle: 'Card Data',
+      rewardTitle: 'Reward Data',
+      bonusTitle: 'Bonus Data',
+      index: 'Index'
+    },
+    user: {
+      id: 'User ID',
+      address: 'Address',
+      unblock: 'Unblock',
+      proxyLevel: 'Proxy Level',
+      teamLevel: 'Team Level',
+      invsterAddress: 'Invster Address',
+      bondTime: 'Bond Time',
+      teamAmount: 'Team Amount',
+      point: 'Point',
+      card: 'Card',
+      gridGain: 'Grid Gain',
+      proxyGain: 'Proxy Gain',
+      teamGain: 'Team Gain',
+      unblockGain: 'Unblock Gain',
+      creactTime: 'Creact Time',
+      newLevel: 'New Level',
+      editLevel: 'Edit Level',
+      inputLevel: 'Please enter the name'
     },
     manage: {
       common: {
@@ -451,6 +479,16 @@ const local: App.I18n.Schema = {
           iconify: 'Iconify Icon',
           local: 'Local Icon'
         }
+      },
+      system: {
+        config: 'System Config',
+        exchangPriceSwitch: 'exchange price switch',
+        syncNumber: 'the number of back-office exchange order statuses to be synchronised at a time',
+        syncIterval: 'exchange order status synchronisation intervals',
+        prepaidOrderExpiryTime: 'prepaid order system expiration time',
+        contractExpiryTime: 'precautionary order contract expiry time',
+        orderExpiryTime: 'exchange order expiration time',
+        exchangeExpiryTime: 'exchange expiration time'
       }
     }
   },

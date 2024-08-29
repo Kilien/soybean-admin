@@ -58,7 +58,7 @@ const { columns, columnChecks, data, getData, loading, mobilePagination } = useT
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <NCard :title="$t('代理等级')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <NCard :title="$t('page.record.bonusTitle')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"
