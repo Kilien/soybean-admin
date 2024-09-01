@@ -65,34 +65,38 @@ async function handleSubmit() {
       size="large"
       class="sm:flex-1-hidden card-wrapper"
     >
-      <NForm ref="formRef" size="large" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.manage.system.exchangPriceSwitch')" path="switch">
-          <NSwitch v-model:value="model.exchangPriceSwitch" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.syncNumber')" path="syncNumber">
-          <NInputNumber v-model:value="model.syncNumber" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.syncIterval')" path="syncIterval">
-          <NInputNumber v-model:value="model.syncIterval" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.prepaidOrderExpiryTime')" path="prepaidOrderExpiryTime">
-          <NInputNumber v-model:value="model.prepaidOrderExpiryTime" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.contractExpiryTime')" path="contractExpiryTime">
-          <NInputNumber v-model:value="model.contractExpiryTime" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.orderExpiryTime')" path="orderExpiryTime">
-          <NInputNumber v-model:value="model.orderExpiryTime" />
-        </NFormItem>
-        <NFormItem :label="$t('page.manage.system.exchangeExpiryTime')" path="exchangeExpiryTime">
-          <NInputNumber v-model:value="model.exchangeExpiryTime" />
-        </NFormItem>
+      <NGrid :x-gap="12" cols="24" item-responsive responsive="screen">
+        <NGridItem :offset="1" span="20">
+          <NForm ref="formRef" size="large" :model="model" :rules="rules">
+            <NFormItem :label="$t('page.manage.system.exchangPriceSwitch')" path="switch">
+              <NSwitch v-model:value="model.exchangPriceSwitch" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.syncNumber')" path="syncNumber">
+              <NInputNumber v-model:value="model.syncNumber" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.syncIterval')" path="syncIterval">
+              <NInputNumber v-model:value="model.syncIterval" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.prepaidOrderExpiryTime')" path="prepaidOrderExpiryTime">
+              <NInputNumber v-model:value="model.prepaidOrderExpiryTime" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.contractExpiryTime')" path="contractExpiryTime">
+              <NInputNumber v-model:value="model.contractExpiryTime" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.orderExpiryTime')" path="orderExpiryTime">
+              <NInputNumber v-model:value="model.orderExpiryTime" />
+            </NFormItem>
+            <NFormItem :label="$t('page.manage.system.exchangeExpiryTime')" path="exchangeExpiryTime">
+              <NInputNumber v-model:value="model.exchangeExpiryTime" />
+            </NFormItem>
 
-        <NSpace :size="18" class="mt-10">
-          <NButton @click="handleInitModel">{{ $t('common.reset') }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
-        </NSpace>
-      </NForm>
+            <NSpace :size="18" class="mt-10">
+              <NButton @click="handleInitModel">{{ $t('common.reset') }}</NButton>
+              <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
+            </NSpace>
+          </NForm>
+        </NGridItem>
+      </NGrid>
     </NCard>
   </div>
 </template>
