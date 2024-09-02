@@ -50,7 +50,8 @@ const local: App.I18n.Schema = {
     },
     pending: 'Toward',
     success: 'Success',
-    fail: 'Fail'
+    fail: 'Fail',
+    uplode: 'Upload'
   },
   request: {
     logout: 'Logout user after request failed',
@@ -160,6 +161,7 @@ const local: App.I18n.Schema = {
     agent: 'Agent Manage',
     agent_account: 'Agent',
     'agent_test-order': 'Test Order',
+    'agent_manual-order': 'Manual Order',
     project: 'Project Manage',
     project_manage: 'Project',
     'project_agent-level': 'Proxy Level',
@@ -176,6 +178,10 @@ const local: App.I18n.Schema = {
     matrix_coin: 'Coin Manage',
     manage: 'System Manage',
     manage_system: 'System Config',
+    manage_coin: 'Data Config',
+    manage_contract: 'Contract Config',
+    manage_level: 'Upgrad Level',
+    manage_fee: 'Fee Config',
     manage_user: 'User Manage',
     'manage_user-detail': 'User Detail',
     manage_role: 'Role Manage',
@@ -299,7 +305,25 @@ const local: App.I18n.Schema = {
       addTime: 'Create Time',
       store: 'Store',
       amount: 'Amount',
-      newOrder: 'New Order'
+      newOrder: 'New Order',
+      orderId: 'Order Id',
+      type: 'Type',
+      buySell: 'Buy-Sell',
+      rise: 'Rise',
+      curPrice: 'Current Price',
+      buyStatus: 'Buy Status',
+      sellStatus: 'Sell Status',
+      buyTime: 'Buy Time',
+      sellPrice: 'Sell Price',
+      sellTime: 'Sell Time',
+      shouldSell: 'Confirm sell?',
+      sellOrder: 'Sell Order',
+      manualBuy: 'Manual Buy Order',
+      limitOrder: 'Limit Order',
+      marketOrder: 'Market Order',
+      apiKey: 'Api Key',
+      inputKey: 'Please enter Exchange ApiKey',
+      tradePair: 'Trade Pair'
     },
     matrix: {
       coinLebel: 'Coin Lebel',
@@ -323,7 +347,16 @@ const local: App.I18n.Schema = {
       tagStatus: 'Status',
       newTag: 'New Tag',
       editTag: 'Edit Tag',
-      inputTag: 'Please enter the name'
+      inputTag: 'Please enter the name',
+      projectName: 'Project Name',
+      projectLogo: 'Project Logo',
+      shareName: 'Share Name',
+      shareLogo: 'Share Logo',
+      swiper: 'Swiper',
+      newLogo: 'New Logo',
+      editLogo: 'Edit Logo',
+      inputProject: 'Please enter the project name',
+      inputShare: 'Please enter the share name'
     },
     record: {
       address: 'Address',
@@ -489,6 +522,66 @@ const local: App.I18n.Schema = {
         contractExpiryTime: 'precautionary order contract expiry time',
         orderExpiryTime: 'exchange order expiration time',
         exchangeExpiryTime: 'exchange expiration time'
+      },
+      coin: {
+        paidCoin: 'Paid Coin Name',
+        paidCoinNumber: 'Paid Coin Number',
+        coinType: 'Coins circulating in the system',
+        prohibitedTime: 'Prohibited Time for Withdrawal of Orders',
+        values: 'Value per share (usdt)',
+        validation1: 'Percentage of contracts transferred Validation1',
+        validation2: 'Percentage of contracts transferred Validation2',
+        raise: 'Increase in the current price of the platform',
+        normalCoin: 'Neutral coin text',
+        payCoinText: 'paid coin text'
+      },
+      contract: {
+        /** Unlocked topic hash */
+        unblockHash: 'Unlocked topic hash',
+        /** Topic hash for usdt earnings */
+        usdtEarnHash: 'Topic hash for usdt earnings',
+        /** Buy points topic hash */
+        buyPointHash: 'Buy points topic hash'
+      },
+      teamLevel: {
+        /** Performance required for team level V5 */
+        V5Yield: 'Performance required for team level V5',
+        /** Performance required for team level V4 */
+        V4Yield: 'Performance required for team level V4',
+        /** Performance required for team level V3 */
+        V3Yield: 'Performance required for team level V3',
+        /** Performance required for team level V2 */
+        V2Yield: 'Performance required for team level V2',
+        /** Performance required for team level V1 */
+        V1Yield: ' Performance required for team level V1',
+        /** Number of direct pushes from V4 required for team level V5 */
+        V5Inviter: 'Number of direct pushes from V4 required for team level V5',
+        /** Number of direct pushes from V3 required for team level V4 */
+        V4Inviter: ' Number of direct pushes from V3 required for team level V4',
+        /** Number of direct pushes from V2 required for team level V3 */
+        V3Inviter: 'Number of direct pushes from V2 required for team level V3',
+        /** Number of direct pushes from V1 required for team level V2 */
+        V2Inviter: 'Number of direct pushes from V1 required for team level V2',
+        /** Team V5 ratio */
+        V5Ratio: 'Team V5 ratio',
+        /** Team V4 ratio */
+        V4Ratio: 'Team V4 ratio',
+        /** Team V3 ratio */
+        V3Ratio: 'Team V3 ratio',
+        /** Team V2 ratio */
+        V2Ratio: 'Team V2 ratio',
+        /** Team V1 ratio */
+        V1Ratio: 'Team V1 ratio'
+      },
+      fee: {
+        /** Spot Earnings Handling Charge */
+        investFee: 'Spot Earnings Handling Charge',
+        /** Grid Revenue Handling Fee */
+        gridFee: 'Grid Revenue Handling Fee',
+        /** Unlock the fixed currency given */
+        unblockCoin: ' Unlock the fixed currency given',
+        /** Unlock the fixed number */
+        unblockAmount: 'Unlock the fixed number'
       }
     }
   },

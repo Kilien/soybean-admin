@@ -12,28 +12,16 @@ const appStore = useAppStore();
 const { formRef, validate } = useNaiveForm();
 const { defaultNumberRule } = useFormRules();
 
-type Model = Pick<
-  Api.SystemManage.Order,
-  | 'exchangPriceSwitch'
-  | 'syncNumber'
-  | 'syncIterval'
-  | 'prepaidOrderExpiryTime'
-  | 'contractExpiryTime'
-  | 'orderExpiryTime'
-  | 'exchangeExpiryTime'
->;
+type Model = Pick<Api.SystemManage.Fee, 'investFee' | 'gridFee' | 'unblockCoin' | 'unblockAmount'>;
 
 const model: Model = reactive(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    exchangPriceSwitch: true,
-    syncNumber: 10,
-    syncIterval: 1,
-    prepaidOrderExpiryTime: 60,
-    contractExpiryTime: 180,
-    orderExpiryTime: 60,
-    exchangeExpiryTime: 30
+    investFee: 0,
+    gridFee: 0,
+    unblockCoin: '',
+    unblockAmount: 0
   };
 }
 
@@ -69,26 +57,17 @@ async function handleSubmit() {
     >
       <NSpace vertical :class="appStore.isMobile ? '' : 'pl-20'">
         <NForm ref="formRef" size="large" :model="model" :rules="rules">
-          <NFormItem :label="$t('page.manage.system.exchangPriceSwitch')" path="switch">
-            <NSwitch v-model:value="model.exchangPriceSwitch" />
+          <NFormItem :label="$t('page.manage.fee.investFee')" path="investFee">
+            <NInputNumber v-model:value="model.investFee" />
           </NFormItem>
-          <NFormItem :label="$t('page.manage.system.syncNumber')" path="syncNumber">
-            <NInputNumber v-model:value="model.syncNumber" />
+          <NFormItem :label="$t('page.manage.fee.gridFee')" path="gridFee">
+            <NInputNumber v-model:value="model.gridFee" />
           </NFormItem>
-          <NFormItem :label="$t('page.manage.system.syncIterval')" path="syncIterval">
-            <NInputNumber v-model:value="model.syncIterval" />
+          <NFormItem :label="$t('page.manage.fee.unblockCoin')" path="unblockCoin">
+            <NInput v-model:value="model.unblockCoin" />
           </NFormItem>
-          <NFormItem :label="$t('page.manage.system.prepaidOrderExpiryTime')" path="prepaidOrderExpiryTime">
-            <NInputNumber v-model:value="model.prepaidOrderExpiryTime" />
-          </NFormItem>
-          <NFormItem :label="$t('page.manage.system.contractExpiryTime')" path="contractExpiryTime">
-            <NInputNumber v-model:value="model.contractExpiryTime" />
-          </NFormItem>
-          <NFormItem :label="$t('page.manage.system.orderExpiryTime')" path="orderExpiryTime">
-            <NInputNumber v-model:value="model.orderExpiryTime" />
-          </NFormItem>
-          <NFormItem :label="$t('page.manage.system.exchangeExpiryTime')" path="exchangeExpiryTime">
-            <NInputNumber v-model:value="model.exchangeExpiryTime" />
+          <NFormItem :label="$t('page.manage.fee.unblockAmount')" path="unblockAmount">
+            <NInputNumber v-model:value="model.unblockAmount" />
           </NFormItem>
 
           <NSpace :size="18" class="mt-5">

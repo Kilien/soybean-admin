@@ -63,6 +63,17 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       },
       {
+        name: 'agent_manual-order',
+        path: '/agent/manual-order',
+        component: 'view.agent_manual-order',
+        meta: {
+          order: 3,
+          icon: 'material-symbols:border-color-outline',
+          title: 'agent_manual-order',
+          i18nKey: 'route.agent_manual-order'
+        }
+      },
+      {
         name: 'agent_test-order',
         path: '/agent/test-order',
         component: 'view.agent_test-order',
@@ -70,7 +81,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           order: 2,
           title: 'agent_test-order',
           i18nKey: 'route.agent_test-order',
-          icon: 'material-symbols:border-color-outline'
+          icon: 'material-symbols:fact-check-outline-rounded'
         }
       }
     ]
@@ -110,6 +121,50 @@ export const generatedRoutes: GeneratedRoute[] = [
       roles: ['R_ADMIN']
     },
     children: [
+      {
+        name: 'manage_coin',
+        path: '/manage/coin',
+        component: 'view.manage_coin',
+        meta: {
+          order: 2,
+          icon: 'tabler:coin-bitcoin',
+          title: 'manage_coin',
+          i18nKey: 'route.manage_coin'
+        }
+      },
+      {
+        name: 'manage_contract',
+        path: '/manage/contract',
+        component: 'view.manage_contract',
+        meta: {
+          order: 3,
+          icon: 'material-symbols:contract-outline-rounded',
+          title: 'manage_contract',
+          i18nKey: 'route.manage_contract'
+        }
+      },
+      {
+        name: 'manage_fee',
+        path: '/manage/fee',
+        component: 'view.manage_fee',
+        meta: {
+          order: 5,
+          icon: 'material-symbols-light:candlestick-chart-outline',
+          title: 'manage_fee',
+          i18nKey: 'route.manage_fee'
+        }
+      },
+      {
+        name: 'manage_level',
+        path: '/manage/level',
+        component: 'view.manage_level',
+        meta: {
+          order: 4,
+          icon: 'carbon:upgrade',
+          title: 'manage_level',
+          i18nKey: 'route.manage_level'
+        }
+      },
       {
         name: 'manage_role',
         path: '/manage/role',

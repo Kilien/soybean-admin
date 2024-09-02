@@ -50,7 +50,8 @@ const local: App.I18n.Schema = {
     },
     pending: '进行中',
     success: '成功',
-    fail: '失败'
+    fail: '失败',
+    uplode: '点击上传'
   },
   request: {
     logout: '请求失败后登出用户',
@@ -160,6 +161,7 @@ const local: App.I18n.Schema = {
     agent: '代理管理',
     agent_account: '代理',
     'agent_test-order': '测试订单',
+    'agent_manual-order': '手动下单',
     project: '项目管理',
     project_manage: '项目配置',
     'project_agent-level': '代理等级管理',
@@ -176,6 +178,10 @@ const local: App.I18n.Schema = {
     matrix_coin: '币种管理',
     manage: '系统管理',
     manage_system: '系统配置',
+    manage_coin: '数据配置',
+    manage_contract: '合约配置',
+    manage_level: '升级条件和分红',
+    manage_fee: '手续费配置',
     manage_user: '用户管理',
     'manage_user-detail': '用户详情',
     manage_role: '角色管理',
@@ -299,7 +305,25 @@ const local: App.I18n.Schema = {
       addTime: '添加时间',
       store: '仓位',
       amount: '数量',
-      newOrder: '新增订单'
+      newOrder: '新增订单',
+      orderId: '交易所订单号',
+      type: '交易所标识',
+      buySell: '订单方向',
+      rise: '涨幅比例（绿涨红跌）',
+      curPrice: '当前价格',
+      buyStatus: '买入状态',
+      sellStatus: '挂卖状态',
+      buyTime: '挂买时间',
+      sellPrice: '卖出价格',
+      sellTime: '挂卖时间',
+      shouldSell: '确认卖出吗？',
+      sellOrder: '卖出订单',
+      manualBuy: '手动下单',
+      limitOrder: '限价单',
+      marketOrder: '市价单',
+      apiKey: '交易所ApiKey',
+      inputKey: '请输入交易所ApiKey',
+      tradePair: '交易所交易对'
     },
     matrix: {
       coinLebel: '币种名称',
@@ -323,7 +347,16 @@ const local: App.I18n.Schema = {
       tagStatus: '状态',
       newTag: '新增标签',
       editTag: '编辑标签',
-      inputTag: '请输入标签名称'
+      inputTag: '请输入标签名称',
+      projectName: '项目名称',
+      projectLogo: '项目Logo',
+      shareName: '分享界面名称',
+      shareLogo: '分享界面Logo',
+      swiper: '轮播图',
+      newLogo: '新增项目',
+      editLogo: '编辑项目',
+      inputProject: '请输入项目名称',
+      inputShare: '请输入分享界面名称'
     },
     record: {
       address: '用户地址',
@@ -489,6 +522,66 @@ const local: App.I18n.Schema = {
         contractExpiryTime: '预付订单【合约】过期时间（单位 秒）',
         orderExpiryTime: '交易所下单过期时间（单位 秒）',
         exchangeExpiryTime: '交易所交易过期时间（单位 秒）'
+      },
+      coin: {
+        paidCoin: '解锁支付的币种',
+        paidCoinNumber: '解锁支付的币种数量',
+        coinType: '系统流通的币种',
+        prohibitedTime: '禁止撤单时间（单位 分）',
+        values: '每份的价值（usdt）',
+        validation1: '转入合约比例验证1',
+        validation2: '转入合约比例验证2',
+        raise: '解锁支付的币种',
+        normalCoin: '中性币种文案',
+        payCoinText: '交易所支付的币种文案'
+      },
+      contract: {
+        /** Unlocked topic hash */
+        unblockHash: '解锁的话题Hash',
+        /** Topic hash for usdt earnings */
+        usdtEarnHash: 'usdt收益的话题Hash',
+        /** Buy points topic hash */
+        buyPointHash: '购买积分话题hash'
+      },
+      teamLevel: {
+        /** Performance required for team level V5 */
+        V5Yield: '团队等级V5所需业绩',
+        /** Performance required for team level V4 */
+        V4Yield: '团队等级V4所需业绩',
+        /** Performance required for team level V3 */
+        V3Yield: '团队等级V3所需业绩',
+        /** Performance required for team level V2 */
+        V2Yield: '团队等级V2所需业绩',
+        /** Performance required for team level V1 */
+        V1Yield: '团队等级V1所需业绩',
+        /** Number of direct pushes from V4 required for team level V5 */
+        V5Inviter: '团队等级V5所需V4的直推数',
+        /** Number of direct pushes from V3 required for team level V4 */
+        V4Inviter: '团队等级V4所需V3的直推数',
+        /** Number of direct pushes from V2 required for team level V3 */
+        V3Inviter: '团队等级V3所需V2的直推数',
+        /** Number of direct pushes from V1 required for team level V2 */
+        V2Inviter: '团队等级V2所需V1的直推数',
+        /** Team V5 ratio */
+        V5Ratio: '团队V5比例',
+        /** Team V4 ratio */
+        V4Ratio: '团队V4比例',
+        /** Team V3 ratio */
+        V3Ratio: '团队V3比例',
+        /** Team V2 ratio */
+        V2Ratio: '团队V2比例',
+        /** Team V1 ratio */
+        V1Ratio: '团队V1比例'
+      },
+      fee: {
+        /** Spot Earnings Handling Charge */
+        investFee: '现货收益手续费',
+        /** Grid Revenue Handling Fee */
+        gridFee: '网格收益手续费',
+        /** Unlock the fixed currency given */
+        unblockCoin: '解锁给的固定币种',
+        /** Unlock the fixed number */
+        unblockAmount: '解锁给的固定数量'
       }
     }
   },

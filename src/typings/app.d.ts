@@ -332,6 +332,7 @@ declare namespace App {
         pending: string;
         success: string;
         fail: string;
+        uplode: string;
       };
       request: {
         logout: string;
@@ -489,6 +490,24 @@ declare namespace App {
           newOrder: string;
           store: string;
           amount: string;
+          orderId: string;
+          type: string;
+          buySell: string;
+          rise: string;
+          curPrice: string;
+          buyStatus: string;
+          sellStatus: string;
+          buyTime: string;
+          sellPrice: string;
+          sellTime: string;
+          shouldSell: string;
+          sellOrder: string;
+          manualBuy: string;
+          limitOrder: string;
+          marketOrder: string;
+          apiKey: string;
+          inputKey: string;
+          tradePair: string;
         };
         matrix: {
           coinLebel: string;
@@ -513,6 +532,15 @@ declare namespace App {
           newTag: string;
           editTag: string;
           inputTag: string;
+          projectName: string;
+          projectLogo: string;
+          shareName: string;
+          shareLogo: string;
+          swiper: string;
+          newLogo: string;
+          editLogo: string;
+          inputProject: string;
+          inputShare: string;
         };
         record: {
           address: string;

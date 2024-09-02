@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onBeforeUnmount, reactive, ref, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 import type { UploadFileInfo } from 'naive-ui/es/upload';
 import { useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
@@ -30,26 +30,29 @@ const { formRef, validate, restoreValidation } = useNaiveForm();
 
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t('page.matrix.newCoin'),
-    edit: $t('page.matrix.editCoin')
+    add: $t('page.project.newLogo'),
+    edit: $t('page.project.editLogo')
   };
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.MatrixManage.Coin, 'label' | 'logo' | 'tradePair' | 'price'>;
+type Model = Pick<Api.ProjectManage.Project, 'projectName' | 'projectLogo' | 'shareName' | 'shareLogo' | 'swiper'>;
 
 const model: Model = reactive(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    label: '',
-    logo: '',
-    price: '',
-    tradePair: ''
+    projectName: '',
+    projectLogo: '',
+    shareName: '',
+    shareLogo: '',
+    swiper: []
   };
 }
 
-const defaultLogo = reactive<UploadFileInfo[]>([]);
+const defaultImageList = reactive<UploadFileInfo[]>([]);
+const defaultProjectLogo = reactive<UploadFileInfo[]>([]);
+const defaultShareLogo = reactive<UploadFileInfo[]>([]);
 
 const logo = reactive([]);
 const uploadRef = ref();
@@ -59,21 +62,38 @@ function handleInitModel() {
 
   if (props.operateType === 'edit' && props.rowData) {
     Object.assign(model, props.rowData);
-    if (defaultLogo.length) {
-      defaultLogo.pop();
-      defaultLogo.push({
+    if (defaultImageList.length) {
+      defaultProjectLogo.pop();
+      defaultProjectLogo.push({
         id: '1',
-        name: model.label,
+        name: model.projectName,
         status: 'finished',
-        url: model.logo
+        url: model.projectLogo
       });
     } else {
-      defaultLogo.push({
+      defaultProjectLogo.push({
         id: '1',
-        name: model.label,
+        name: model.projectName,
         status: 'finished',
-        url: model.logo
+        url: model.projectLogo
       });
+      defaultShareLogo.push({
+        id: '1',
+        name: model.shareName,
+        status: 'finished',
+        url: model.shareLogo
+      });
+
+      // eslint-disable-next-line no-plusplus
+      for (let index = 0; index < model.swiper.length; index++) {
+        const element = model.swiper[index];
+        defaultImageList.push({
+          id: `swiper${index}`,
+          name: `swiper${index}`,
+          status: 'finished',
+          url: element
+        });
+      }
     }
   }
 }
@@ -109,24 +129,25 @@ function handleChange(event: Event) {
   <NDrawer v-model:show="visible" display-directive="if" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model">
-        <NFormItem :label="$t('page.matrix.coinLebel')" path="label">
-          <NInput v-model:value="model.label" :placeholder="$t('page.matrix.inputCoin')" />
+        <NFormItem :label="$t('page.project.projectName')" path="projectName">
+          <NInput v-model:value="model.projectName" :placeholder="$t('page.project.inputProject')" />
         </NFormItem>
-        <NFormItem :label="$t('page.matrix.tradePair')" path="tradePair">
-          <NInput v-model:value="model.tradePair" :placeholder="$t('page.matrix.inputPair')" />
+        <NFormItem :label="$t('page.project.projectLogo')" path="projectLogo">
+          <NUpload ref="uploadRef" :default-file-list="defaultProjectLogo" list-type="image-card" :max="1">
+            {{ $t('page.common.upload') }}
+          </NUpload>
         </NFormItem>
-        <NFormItem :label="$t('page.matrix.price')" path="price">
-          <NInput v-model:value="model.price" />
+        <NFormItem :label="$t('page.project.shareName')" path="shareName">
+          <NInput v-model:value="model.shareName" :placeholder="$t('page.project.inputShare')" />
         </NFormItem>
-        <NUpload
-          ref="uploadRef"
-          :default-file-list="defaultLogo"
-          list-type="image-card"
-          :max="1"
-          @change="handleChange"
-        >
-          {{ $t('page.common.upload') }}
-        </NUpload>
+        <NFormItem :label="$t('page.project.shareLogo')" path="shareLogo">
+          <NUpload :default-file-list="defaultShareLogo" list-type="image-card" :max="1">
+            {{ $t('page.common.upload') }}
+          </NUpload>
+        </NFormItem>
+        <NFormItem :label="$t('page.project.swiper')" path="swiper">
+          <NUpload :default-file-list="defaultImageList" list-type="image-card">{{ $t('page.common.upload') }}</NUpload>
+        </NFormItem>
       </NForm>
       <template #footer>
         <NSpace :size="16">

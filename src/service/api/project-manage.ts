@@ -8,3 +8,12 @@ export function fetchInvestmentTag(params?: Api.ProjectManage.InvestmentTagSearc
     params
   });
 }
+
+/** get project list */
+export function fetchProjectList(params?: Api.ProjectManage.CommonSearchParams) {
+  return request<Api.ProjectManage.ProjectList>({
+    url: '/parojectManage/getProjectList',
+    method: 'get',
+    params
+  });
+}

@@ -22,10 +22,15 @@ declare module "@elegant-router/types" {
     "500": "/500";
     "agent": "/agent";
     "agent_account": "/agent/account";
+    "agent_manual-order": "/agent/manual-order";
     "agent_test-order": "/agent/test-order";
     "home": "/home";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd)?";
     "manage": "/manage";
+    "manage_coin": "/manage/coin";
+    "manage_contract": "/manage/contract";
+    "manage_fee": "/manage/fee";
+    "manage_level": "/manage/level";
     "manage_role": "/manage/role";
     "manage_system": "/manage/system";
     "manage_user": "/manage/user";
@@ -107,8 +112,13 @@ declare module "@elegant-router/types" {
     | "500"
     | "login"
     | "agent_account"
+    | "agent_manual-order"
     | "agent_test-order"
     | "home"
+    | "manage_coin"
+    | "manage_contract"
+    | "manage_fee"
+    | "manage_level"
     | "manage_role"
     | "manage_system"
     | "manage_user-detail"

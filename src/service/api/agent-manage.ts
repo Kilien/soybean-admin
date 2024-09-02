@@ -17,3 +17,12 @@ export function fetchAgentLevel(params?: Api.AgentManage.UserLevelSearchParams) 
     params
   });
 }
+
+/** get agent list */
+export function fetchOrderList(params?: Api.AgentManage.CommonSearchParams) {
+  return request<Api.AgentManage.OrderList>({
+    url: '/agentManage/geOrderList',
+    method: 'get',
+    params
+  });
+}

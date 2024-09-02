@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onBeforeUnmount, reactive, ref, watch } from 'vue';
-import type { UploadFileInfo } from 'naive-ui/es/upload';
+import { computed, reactive, watch } from 'vue';
 import { useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 defineOptions({
@@ -11,7 +10,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemManage.User | null;
+  rowData?: Api.AgentManage.Order | null;
 }
 
 const props = defineProps<Props>();
@@ -30,51 +29,42 @@ const { formRef, validate, restoreValidation } = useNaiveForm();
 
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t('page.matrix.newCoin'),
-    edit: $t('page.matrix.editCoin')
+    add: $t('page.agent.manualBuy'),
+    edit: $t('page.manage.user.editUser')
   };
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.MatrixManage.Coin, 'label' | 'logo' | 'tradePair' | 'price'>;
+type Model = Pick<Api.AgentManage.Order, 'address' | 'type' | 'curPrice' | 'price' | 'amount'>;
 
 const model: Model = reactive(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    label: '',
-    logo: '',
+    address: '',
+    type: '1',
+    curPrice: '',
     price: '',
-    tradePair: ''
+    amount: ''
   };
 }
 
-const defaultLogo = reactive<UploadFileInfo[]>([]);
-
-const logo = reactive([]);
-const uploadRef = ref();
+const options = reactive([
+  {
+    label: $t('page.agent.limitOrder'),
+    value: '1'
+  },
+  {
+    label: $t('page.agent.marketOrder'),
+    value: '2'
+  }
+]);
 
 function handleInitModel() {
   Object.assign(model, createDefaultModel());
 
   if (props.operateType === 'edit' && props.rowData) {
     Object.assign(model, props.rowData);
-    if (defaultLogo.length) {
-      defaultLogo.pop();
-      defaultLogo.push({
-        id: '1',
-        name: model.label,
-        status: 'finished',
-        url: model.logo
-      });
-    } else {
-      defaultLogo.push({
-        id: '1',
-        name: model.label,
-        status: 'finished',
-        url: model.logo
-      });
-    }
   }
 }
 
@@ -85,7 +75,6 @@ function closeDrawer() {
 async function handleSubmit() {
   await validate();
   // request
-  console.log('model...', model, logo);
   window.$message?.success($t('common.updateSuccess'));
   closeDrawer();
   emit('submitted');
@@ -98,35 +87,33 @@ watch(visible, () => {
     // getRoleOptions();
   }
 });
-
-function handleChange(event: Event) {
-  console.log('e.target,...', event);
-  console.log('uploadRef.value...', uploadRef.value);
-}
 </script>
 
 <template>
-  <NDrawer v-model:show="visible" display-directive="if" :width="360">
+  <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model">
-        <NFormItem :label="$t('page.matrix.coinLebel')" path="label">
-          <NInput v-model:value="model.label" :placeholder="$t('page.matrix.inputCoin')" />
+        <NFormItem :label="$t('page.manage.user.userName')" path="address">
+          <NInput v-model:value="model.address" :placeholder="$t('page.manage.user.form.userName')" />
         </NFormItem>
-        <NFormItem :label="$t('page.matrix.tradePair')" path="tradePair">
-          <NInput v-model:value="model.tradePair" :placeholder="$t('page.matrix.inputPair')" />
+        <NFormItem :label="$t('page.agent.apiKey')" path="apiKey">
+          <NInput disabled value="sdf1as5d6f12f3s" :placeholder="$t('page.agent.inputKey')" />
         </NFormItem>
-        <NFormItem :label="$t('page.matrix.price')" path="price">
-          <NInput v-model:value="model.price" />
+        <NFormItem :label="$t('page.agent.tradePair')" path="tread">
+          <NInput value="SDTBNB" disabled />
         </NFormItem>
-        <NUpload
-          ref="uploadRef"
-          :default-file-list="defaultLogo"
-          list-type="image-card"
-          :max="1"
-          @change="handleChange"
-        >
-          {{ $t('page.common.upload') }}
-        </NUpload>
+        <NFormItem :label="$t('page.agent.curPrice')" path="curPrice">
+          <NInput v-model:value="model.curPrice" disabled />
+        </NFormItem>
+        <NFormItem :label="$t('page.agent.status')" path="type">
+          <NSelect v-model:value="model.type" :options="options" />
+        </NFormItem>
+        <NFormItem :label="$t('page.agent.price')" path="price">
+          <NInput v-model:value="model.curPrice" />
+        </NFormItem>
+        <NFormItem :label="$t('page.agent.amount')" path="amount">
+          <NInput v-model:value="model.curPrice" />
+        </NFormItem>
       </NForm>
       <template #footer>
         <NSpace :size="16">

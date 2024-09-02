@@ -1,6 +1,6 @@
 <script setup lang="tsx">
-import { NButton } from 'naive-ui';
-import { fetchProjectList } from '@/service/api';
+import { NButton, NPopconfirm } from 'naive-ui';
+import { fetchOrderList } from '@/service/api';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -9,7 +9,7 @@ import UserOperateDrawer from './modules/user-operate-drawer.vue';
 const appStore = useAppStore();
 
 const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagination } = useTable({
-  apiFn: fetchProjectList,
+  apiFn: fetchOrderList,
   showTotal: true,
   apiParams: {
     current: 1,
@@ -19,58 +19,88 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
   },
   columns: () => [
     {
-      key: 'projectName',
-      title: $t('page.manage.projectName'),
+      key: 'address',
+      title: $t('page.agent.account'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'projectLogo',
-      title: $t('page.manage.projectLogo'),
+      key: 'orderId',
+      title: $t('page.agent.orderId'),
       align: 'center',
-      minWidth: 100,
-      render: row => {
-        if (row.status === null) {
-          return null;
-        }
-        return <n-image width="50" src={row.projectLogo} />;
-      }
+      width: 68
     },
     {
-      key: 'swiper',
-      title: $t('page.manage.swiper'),
+      key: 'type',
+      title: $t('page.agent.type'),
       align: 'center',
-      minWidth: 100,
-      render: row => {
-        if (row.status === null) {
-          return null;
-        }
-        return row.swiper.map(item => {
-          return (
-            <n-space>
-              <n-image height="50" src={item} />
-            </n-space>
-          );
-        });
-      }
+      minWidth: 100
     },
     {
-      key: 'shareName',
-      title: $t('page.manage.shareName'),
+      key: 'status',
+      title: $t('page.agent.status'),
       align: 'center',
-      minWidth: 200
+      minWidth: 100
     },
     {
-      key: 'shareLogo',
-      title: $t('page.manage.shareLogo'),
+      key: 'buySell',
+      title: $t('page.agent.buySell'),
       align: 'center',
-      minWidth: 100,
-      render: row => {
-        if (row.status === null) {
-          return null;
-        }
-        return <n-image width="50" src={row.shareLogo} />;
-      }
+      minWidth: 100
+    },
+    {
+      key: 'amount',
+      title: $t('page.agent.amount'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'price',
+      title: $t('page.agent.price'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'rise',
+      title: $t('page.agent.rise'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'curPrice',
+      title: $t('page.agent.curPrice'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'buyStatus',
+      title: $t('page.agent.buyStatus'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'buyTime',
+      title: $t('page.agent.buyTime'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'sellPrice',
+      title: $t('page.agent.sellPrice'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'sellStatus',
+      title: $t('page.agent.sellStatus'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'sellTime',
+      title: $t('page.agent.sellTime'),
+      align: 'center',
+      minWidth: 100
     },
     {
       key: 'operate',
@@ -79,9 +109,16 @@ const { columns, columnChecks, data, getData, getDataByPage, loading, mobilePagi
       width: 130,
       render: row => (
         <div class="flex-center gap-8px">
-          <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
-            {$t('common.edit')}
-          </NButton>
+          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
+            {{
+              default: () => $t('page.agent.shouldSell'),
+              trigger: () => (
+                <NButton type="error" ghost size="small">
+                  {$t('page.agent.sellOrder')}
+                </NButton>
+              )
+            }}
+          </NPopconfirm>
         </div>
       )
     }
@@ -94,6 +131,7 @@ const {
   editingData,
   handleAdd,
   handleEdit,
+  onDeleted,
   checkedRowKeys,
   onBatchDeleted
   // closeDrawer
@@ -106,6 +144,13 @@ async function handleBatchDelete() {
   onBatchDeleted();
 }
 
+function handleDelete(id: number) {
+  // request
+  console.log(id);
+
+  onDeleted();
+}
+
 function edit(id: number) {
   handleEdit(id);
 }
@@ -113,7 +158,7 @@ function edit(id: number) {
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <NCard :title="$t('币种管理')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <NCard :title="$t('page.manage.user.title')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"

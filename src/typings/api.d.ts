@@ -210,6 +210,36 @@ declare namespace Api {
       price: number;
     }>;
 
+    /** order */
+    type Order = Common.CommonRecord<{
+      /** user address */
+      address: string;
+      /** ordier id */
+      orderId: string;
+      /** order type */
+      type: string;
+      /** buy-sell */
+      buySell: string;
+      /** buy sell number */
+      amount: string;
+      /** order price */
+      price: string;
+      /** order rise fall */
+      rise: string;
+      /** order current price */
+      curPrice: string;
+      /** order buy status */
+      buyStatus: string;
+      /** order sell status */
+      sellStatus: string;
+      /** order create time */
+      buyTime: string;
+      /** order sell price */
+      sellPrice: string;
+      /** order sell time */
+      sellTime: string;
+    }>;
+
     /** user search params */
     type UserSearchParams = CommonType.RecordNullable<
       Pick<Api.AgentManage.User, 'address' | 'website' | 'remark'> & CommonSearchParams
@@ -225,6 +255,9 @@ declare namespace Api {
 
     /** user list */
     type UserLevel = Common.PaginatingQueryRecord<Level>;
+
+    /** manual order */
+    type OrderList = Common.PaginatingQueryRecord<Order>;
   }
 
   /**
@@ -329,6 +362,31 @@ declare namespace Api {
       label: string;
     }>;
 
+    type Swiper = {
+      /* swiper id */
+      id: number;
+      /* swiper image */
+      image: string;
+      /* swiper link */
+      link: string;
+    };
+
+    /** project */
+    type Project = Common.CommonRecord<{
+      /** project name */
+      projectName: string;
+      /** project logo */
+      projectLogo: string;
+      /** share name */
+      shareName: string;
+      /** project logo */
+      shareLogo: string;
+      /* swiper image */
+      swiper: any[];
+      /* swiper link */
+      link: any[];
+    }>;
+
     /** user search params */
     type UserSearchParams = CommonType.RecordNullable<
       Pick<Api.ProjectManage.User, 'address' | 'website' | 'remark'> & CommonSearchParams
@@ -344,6 +402,9 @@ declare namespace Api {
 
     /** Investment Tag */
     type InvestmentTag = Common.PaginatingQueryRecord<Tag>;
+
+    /** project */
+    type ProjectList = Common.PaginatingQueryRecord<Project>;
   }
 
   /**
@@ -558,6 +619,84 @@ declare namespace Api {
       orderExpiryTime: number;
       /** exchange expiration time. */
       exchangeExpiryTime: number;
+    }>;
+
+    /** coin */
+    type Coin = Common.CommonRecord<{
+      /** paid coin name */
+      paidCoin: string;
+      /** paid coin number */
+      paidCoinNumber: number;
+      /** Coins circulating in the system */
+      coinType: string;
+      /** Prohibited Time for Withdrawal of Orders */
+      prohibitedTime: number;
+      /** Value per share (usdt) */
+      values: number;
+      /** Percentage of contracts transferred Validation1 */
+      validation1: number;
+      /** Percentage of contracts transferred Validation2 */
+      validation2: number;
+      /** Increase in the current price of the platform */
+      raise: string;
+      /** Neutral coin copy */
+      normalCoin: string;
+      /** paid coin copy */
+      payCoinText: string;
+    }>;
+
+    /** contract */
+    type Contract = Common.CommonRecord<{
+      /** Unlocked topic hash */
+      unblockHash: string;
+      /** Topic hash for usdt earnings */
+      usdtEarnHash: string;
+      /** Buy points topic hash */
+      buyPointHash: string;
+    }>;
+
+    /** team level */
+    type TeamLevel = Common.CommonRecord<{
+      /** Performance required for team level V5 */
+      V5Yield: number;
+      /** Performance required for team level V4 */
+      V4Yield: number;
+      /** Performance required for team level V3 */
+      V3Yield: number;
+      /** Performance required for team level V2 */
+      V2Yield: number;
+      /** Performance required for team level V1 */
+      V1Yield: number;
+      /** Number of direct pushes from V4 required for team level V5 */
+      V5Inviter: number;
+      /** Number of direct pushes from V3 required for team level V4 */
+      V4Inviter: number;
+      /** Number of direct pushes from V2 required for team level V3 */
+      V3Inviter: number;
+      /** Number of direct pushes from V1 required for team level V2 */
+      V2Inviter: number;
+      /** Team V5 ratio */
+      V5Ratio: number;
+      /** Team V4 ratio */
+      V4Ratio: number;
+      /** Team V3 ratio */
+      V3Ratio: number;
+      /** Team V2 ratio */
+      V2Ratio: number;
+      /** Team V1 ratio */
+      V1Ratio: number;
+    }>;
+
+    /** fee */
+    type Fee = Common.CommonRecord<{
+      /** Spot Earnings Handling Charge */
+      investFee: number;
+      /** Grid Revenue Handling Fee */
+      gridFee: number;
+      /** Unlock the fixed currency given */
+      unblockCoin: string;
+      /** Unlock the fixed number */
+      unblockAmount: number;
     }>;
   }
 }
